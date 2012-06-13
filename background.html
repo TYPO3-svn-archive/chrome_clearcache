@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<script src="Classes/jquery-1.7.2.min.js"></script>
+		<script src="Classes/handlebars-1.0.0.beta.6.js"></script>
+
+		<script src="Classes/Controller/ClearCacheController.js"></script>
+		<script src="Classes/Domain/Model/View.js"></script>
+	</head>
+	<body>
+		<!-- Templates -->
+		<script id="error" type="text/x-handlebars-template">
+			<div class="message installationRequired error">
+				<span>
+					<b>{{translate "errorHeadline"}}</b>
+					{{translate "errorText"}}
+					<div class="code">
+						{{errorStatus}} -> {{errorStatusText}}
+					</div>
+
+				</span>
+			</div>
+		</script>
+
+		<script id="needLogin" type="text/x-handlebars-template">
+			<div class="message loginRequired">
+				<b>{{translate "loginRequiredHeadline"}}</b>
+				<span>{{translate "loginRequired"}}</span>
+				<a href="{{loginLinkHref}}" target="_blank">{{translate "loginLinkText"}}</a>
+			</div>
+		</script>
+
+		<script id="show" type="text/x-handlebars-template">
+			{{#if cachesAvailable}}
+				<ul class="caches">
+					{{#each caches}}
+						<li>
+							<a href="{{href}}"><span class="image"><img src="{{icon}}" alt="{{title}}"></span><span class="title">{{title}}</span></a>
+						</li>
+					{{/each}}
+
+					<li class="refresh">
+						<label><input type="checkbox" name="refeshAfterClearingCache" /><span>{{translate "refeshAfterClearingCache"}}</span></label>
+					</li>
+				</ul>
+			{{else}}
+				<div class="loginRequired noCaches">
+					<b>{{translate "noCachesAvailableHeadline"}}</b>
+					{{translate "noCachesAvailable"}}
+				</div>
+			{{/if}}
+		</script>
+
+
+		<!-- Script -->
+		<script type="text/javascript">
+			var tabs = {};
+			chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+				var Controller = tabs[sender.tab.id] = new Typo3ClearCache();
+				Controller.setRequest(request);
+				Controller.setSender(sender);
+				Controller.setView(new View());
+				Controller.indexAction();
+			});
+
+			chrome.tabs.onActivated.addListener(function(tab){
+				chrome.contextMenus.removeAll();
+				if (tabs[tab.tabId] !== undefined) {
+					tabs[tab.tabId].buildContextMenu(tab.tabId);
+				}
+			});
+		</script>
+	</body>
+</html>
