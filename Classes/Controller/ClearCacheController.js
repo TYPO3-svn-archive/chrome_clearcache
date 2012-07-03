@@ -32,6 +32,11 @@ Typo3ClearCache.prototype.indexAction = function() {
 	var $this = this;
 	this.baseHostname = this.getBaseHostname();
 
+	if (this.sender.tab.url.match(/.*typo3\/index\.php$/i)) {
+		$this.needLoginAction();
+		return;
+	}
+
 	$.ajax({
 		url: this.baseHostname + 'typo3/backend.php',
 		cache: false
