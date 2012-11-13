@@ -67,7 +67,7 @@ Typo3ClearCache.prototype.needLoginAction = function() {
 	chrome.pageAction.setTitle({tabId: this.sender.tab.id, title: chrome.i18n.getMessage('loginRequired')});
 	chrome.pageAction.show(this.sender.tab.id);
 
-	this.view.setTemplate('needLogin');
+	this.view.setTemplateName('needLogin');
 	this.view.assign('loginLinkHref', this.baseHostname + 'typo3/index.php');
 	this.view.assign('installationLinkHref', this.pathToTER);
 	this.renderOutput();
@@ -82,7 +82,7 @@ Typo3ClearCache.prototype.errorAction = function(error) {
 	chrome.pageAction.setTitle({tabId: this.sender.tab.id, title: chrome.i18n.getMessage('errorTitle')});
 	chrome.pageAction.show(this.sender.tab.id);
 
-	this.view.setTemplate('error');
+	this.view.setTemplateName('error');
 	this.view.assign('errorStatus', error.status);
 	this.view.assign('errorStatusText', error.statusText);
 	this.setOutput(this.view.render());
@@ -100,7 +100,7 @@ Typo3ClearCache.prototype.showAction = function(caches) {
 
 	this.buildContextMenu(this.sender.tab.id);
 
-	this.view.setTemplate('show');
+	this.view.setTemplateName('show');
 	this.view.assign('cachesAvailable', (caches.length > 0) ? true : false);
 	this.view.assign('caches', caches);
 	this.renderOutput();
@@ -232,8 +232,42 @@ Typo3ClearCache.prototype.setOutput = function(output) {
 };
 
 Typo3ClearCache.prototype.renderOutput = function() {
-	this.setOutput(this.view.render());
+	var iframe = document.getElementById('templates');
+	var parameter = {
+		command: 'render',
+		templateName: this.view.templateName,
+		variables: this.view.variables,
+		locales: this.getLocales()
+	};
+	iframe.contentWindow.postMessage(parameter, '*');
+
+	var _this = this;
+	window.addEventListener('message', function (event) {
+		_this.setOutput(event.data.html);
+	});
 };
+
+Typo3ClearCache.prototype.getLocales = function() {
+	var localeKeys = [
+		'typo3clearcaches',
+		'clearCache',
+		'errorTitle',
+		'errorHeadline',
+		'errorText',
+		'extensionDescription',
+		'loginLinkText',
+		'loginRequired',
+		'loginRequiredHeadline',
+		'noCachesAvailable',
+		'noCachesAvailableHeadline',
+		'refeshAfterClearingCache'
+	];
+	var locales = {};
+	for (var i = 0; i < localeKeys.length; i++) {
+		locales[localeKeys[i]] = chrome.i18n.getMessage(localeKeys[i]);
+	}
+	return locales;
+}
 
 Typo3ClearCache.prototype.getBaseHostname = function() {
 	var tabUrl = this.sender.tab.url;

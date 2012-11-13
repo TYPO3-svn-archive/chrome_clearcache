@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<script src="Classes/jquery-1.8.2.min.js"></script>
+		<script src="Classes/handlebars-1.0.0.beta.6.js"></script>
+	</head>
+	<body>
+		<!-- Templates -->
+		<script id="error" type="text/x-handlebars-template">
+			<div class="message installationRequired error">
+				<span>
+					<b>{{translate "errorHeadline"}}</b>
+					{{translate "errorText"}}
+					<div class="code">
+						{{errorStatus}} -> {{errorStatusText}}
+					</div>
+
+				</span>
+			</div>
+		</script>
+
+		<script id="needLogin" type="text/x-handlebars-template">
+			<div class="message loginRequired">
+				<b>{{translate "loginRequiredHeadline"}}</b>
+				<span>{{translate "loginRequired"}}</span>
+				<a href="{{loginLinkHref}}" target="_blank">{{translate "loginLinkText"}}</a>
+			</div>
+		</script>
+
+		<script id="show" type="text/x-handlebars-template">
+			{{#if cachesAvailable}}
+				<ul class="caches">
+					{{#each caches}}
+						<li>
+							<a href="{{href}}"><span class="image"><img src="{{icon}}" alt="{{title}}"></span><span class="title">{{title}}</span></a>
+						</li>
+					{{/each}}
+
+					<li class="refresh">
+						<label><input type="checkbox" name="refeshAfterClearingCache" /><span>{{translate "refeshAfterClearingCache"}}</span></label>
+					</li>
+				</ul>
+			{{else}}
+				<div class="loginRequired noCaches">
+					<b>{{translate "noCachesAvailableHeadline"}}</b>
+					{{translate "noCachesAvailable"}}
+				</div>
+			{{/if}}
+		</script>
+
+		<!-- Rendering of templates -->
+		<script type="text/javascript">
+			var locales = null;
+
+			/* Handlebars Helpers */
+			Handlebars.registerHelper('translate', function(key){
+				var message = locales[key];
+				if (message) {
+					return message;
+				}
+				return '*Missing key: ' + key + '*';
+			});
+
+			var templates = [];
+			$('script[type="text/x-handlebars-template"]').each(function(){
+				templates[$(this).attr('id')] = Handlebars.compile($(this).html());
+			});
+
+			window.addEventListener('message', function (event) {
+				switch (event.data.command) {
+					case 'render':
+						locales = event.data.locales;
+						event.source.postMessage({
+							html: templates[event.data.templateName](event.data.variables)
+						}, event.origin);
+						break;
+				}
+			});
+		</script>
+	</body>
+</html>
