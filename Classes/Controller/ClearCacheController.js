@@ -5,6 +5,7 @@ var Typo3ClearCache = Typo3ClearCache || function(){
 	this.output = null;
 	this.tabs = [];
 
+	this.baseUrl = null;
 	this.baseHostname = '';
 };
 
@@ -28,6 +29,7 @@ Typo3ClearCache.prototype.indexAction = function() {
 		this.noTypo3Action();
 		return;
 	}
+	this.baseUrl = this.request.baseUrl;
 
 	var $this = this;
 	this.baseHostname = this.getBaseHostname();
@@ -270,8 +272,12 @@ Typo3ClearCache.prototype.getLocales = function() {
 }
 
 Typo3ClearCache.prototype.getBaseHostname = function() {
-	var tabUrl = this.sender.tab.url;
-	return tabUrl.replace(/(.*?\:\/\/.*?\/).*/gi, '$1');
+	if (this.baseUrl === null) {
+		var tabUrl = this.sender.tab.url;
+		return tabUrl.replace(/(.*?\:\/\/.*?\/).*/gi, '$1');
+	} else {
+		return this.baseUrl;
+	}
 };
 
 Typo3ClearCache.prototype._isValidJson = function(json) {

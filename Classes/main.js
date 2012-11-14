@@ -45,8 +45,20 @@
 				}
 			}
 			return false;
+		},
+
+		getBaseUrl: function() {
+			var baseTag = window.document.getElementsByTagName('base')[0];
+			if (baseTag) {
+				return baseTag.href;
+			} else {
+				return null;
+			}
 		}
 	};
 
-	chrome.extension.sendRequest({isTypo3Website: MetaUtility.isTypo3Website()});
+	chrome.extension.sendRequest({
+		isTypo3Website: MetaUtility.isTypo3Website(),
+		baseUrl: MetaUtility.getBaseUrl()
+	});
 })(window);
