@@ -8,6 +8,10 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 });
 
 chrome.tabs.onActivated.addListener(function(tab){
+	if (typeof tabs[tab.tabId] === 'object') {
+		tabs[tab.tabId].indexAction();
+	}
+
 	chrome.contextMenus.removeAll();
 	if (tabs[tab.tabId] !== undefined) {
 		tabs[tab.tabId].buildContextMenu(tab.tabId);
