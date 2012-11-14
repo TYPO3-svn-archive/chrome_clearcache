@@ -85,7 +85,7 @@ Typo3ClearCache.prototype.errorAction = function(error) {
 	this.view.setTemplateName('error');
 	this.view.assign('errorStatus', error.status);
 	this.view.assign('errorStatusText', error.statusText);
-	this.setOutput(this.view.render());
+	this.renderOutput();
 };
 
 
