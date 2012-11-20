@@ -123,7 +123,7 @@ Typo3ClearCache.prototype.noTypo3Action = function() {
 Typo3ClearCache.prototype.buildContextMenu = function(tabId) {
 	var $this = this;
 
-	if (this.tabs[tabId].length === 0) return;
+	if (this.tabs.length === 0) return;
 
 	chrome.contextMenus.removeAll();
 	var mainMenu = chrome.contextMenus.create({
