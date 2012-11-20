@@ -38,4 +38,15 @@ chrome.tabs.getSelected(null, function(tab) {
 		currentTab.buildContextMenu(tab.id);
 	});
 	$('input[name="refeshAfterClearingCache"]').prop('checked', localStorage.refeshAfterClearingCache);
+
+	$('input[name="clearCacheOnBeforeRequest"]').on('change', function(){
+		if ($(this).prop('checked')) {
+			localStorage.clearCacheOnBeforeRequest = true;
+		} else {
+			localStorage.removeItem('clearCacheOnBeforeRequest');
+		}
+		chrome.contextMenus.removeAll();
+		currentTab.buildContextMenu(tab.id);
+	});
+	$('input[name="clearCacheOnBeforeRequest"]').prop('checked', localStorage.clearCacheOnBeforeRequest);
 });

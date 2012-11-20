@@ -61,4 +61,13 @@
 		isTypo3Website: MetaUtility.isTypo3Website(),
 		baseUrl: MetaUtility.getBaseUrl()
 	});
+
+	chrome.extension.onMessage.addListener(function(message, sender, sendResponse) {
+		var info = '<div id="typo3clearcache_notification" style="cursor: wait; background: #222; color: #fff; position: absolute; top: 0; left: 0; text-align: center; z-index: 998; width:100%; padding: 18px 0; opacity: 0.7; font:bold 16px/16px  Arial, sans-serif;">' + message + '</div>';
+		var notification = document.getElementById('typo3clearcache_notification');
+		if (notification) {
+			notification.parentNode.removeChild(notification);
+		}
+		document.body.innerHTML = info + document.body.innerHTML;
+	});
 })(window);
