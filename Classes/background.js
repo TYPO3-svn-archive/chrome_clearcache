@@ -15,8 +15,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 				|| !tabs[details.tabId].tabs[details.tabId]
 				|| details.url.indexOf(tabs[details.tabId].getBaseHostname()) === -1
 				|| details.url.indexOf(tabs[details.tabId].getBaseHostname() + 'typo3/') !== -1
-				|| details.type !== 'main_frame'
-				|| details.url.substr(0, 19) == 'chrome-extension://') {
+				|| details.type !== 'main_frame') {
 			return;
 		}
 
