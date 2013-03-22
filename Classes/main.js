@@ -57,7 +57,7 @@
 		},
 
 		isTypo3Backend: function() {
-			return (location.pathname.match(/^\/typo3\//i)) ? true : false;
+			return (location.pathname.match(/\/typo3\//i)) ? true : false;
 		}
 	};
 

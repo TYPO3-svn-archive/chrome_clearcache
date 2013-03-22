@@ -26,7 +26,6 @@ Typo3ClearCache.prototype.setView = function(view) {
  */
 Typo3ClearCache.prototype.indexAction = function() {
 	if (!this.request.isTypo3Website || this.request.isTypo3Backend) {
-		console.log('notypo3');
 		this.noTypo3Action();
 		return;
 	}
