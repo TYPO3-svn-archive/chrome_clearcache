@@ -1,7 +1,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2012 Armin Ruediger Vieweg <armin@v.ieweg.de>
+ *  (c) 2012-2013 Armin Ruediger Vieweg <armin@v.ieweg.de>
  *
  *  All rights reserved
  *
@@ -54,11 +54,16 @@
 			} else {
 				return null;
 			}
+		},
+
+		isTypo3Backend: function() {
+			return (location.pathname.match(/^\/typo3\//i)) ? true : false;
 		}
 	};
 
 	chrome.extension.sendRequest({
 		isTypo3Website: MetaUtility.isTypo3Website(),
-		baseUrl: MetaUtility.getBaseUrl()
+		baseUrl: MetaUtility.getBaseUrl(),
+		isTypo3Backend: MetaUtility.isTypo3Backend()
 	});
 })(window);
