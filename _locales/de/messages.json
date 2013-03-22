@@ -1,62 +1,50 @@
 {
-	"typo3clearcaches":{
-		"description":"",
-		"message":"TYPO3 Clear Caches"
+	"typo3clearcaches": {
+	  "description": "",
+	  "message": "TYPO3 Clear Caches"
 	},
-	"clearCache":{
-		"description":"",
-		"message":"Hier klicken um TYPO3 Caches zu leeren..."
-	},
-	"errorTitle":{
-		"description":"",
-		"message":"Ein Fehler ist aufgetreten"
-	},
-	"errorHeadline":{
-		"description":"",
-		"message":"Fehler aufgetreten!"
-	},
-	"errorText":{
-		"description":"",
-		"message":"Bei dem Versuch die Caches auszulesen ist folgender Fehler aufgetreten:"
-	},
-	"extensionDescription":{
-		"description":"",
-		"message":"Zeigt ein Icon in der Adressleiste an, mit dem der TYPO3 Cache direkt aus Google Chrome heraus geleert werden kann."
-	},
-	"loginLinkText":{
-		"description":"",
-		"message":"Zum TYPO3 Backend Login"
-	},
-	"loginRequired":{
-		"description":"",
-		"message":"Bitte melden Sie sich im TYPO3 Backend an um den Cache leeren zu k\u00F6nnen."
-	},
-	"loginRequiredHeadline":{
-		"description":"",
-		"message":"Anmeldung"
-	},
-	"noCachesAvailable":{
-		"description":"",
-		"message":"F\u00FCr Ihren Benutzer sind keine Caches verf\u00FCgbar."
-	},
-	"noCachesAvailableHeadline":{
-		"description":"",
-		"message":"Keine Caches"
-	},
-	"refeshAfterClearingCache":{
-		"description":"",
-		"message":"Automatisch neu laden"
-	},
-	"executing":{
-		"description":"",
-		"message":"Führe aus"
-	},
-	"loadingPage":{
-		"description":"",
-		"message":"Lade Seite"
-	},
-	"clearCacheOnBeforeRequest":{
-		"description":"",
-		"message":"Leere ersten Cache automatisch"
-	}
+   "clearCache": {
+      "description": "",
+      "message": "Hier klicken um TYPO3 Caches zu leeren..."
+   },
+   "errorTitle": {
+      "description": "",
+      "message": "Ein Fehler ist aufgetreten"
+   },
+   "errorHeadline": {
+      "description": "",
+      "message": "Fehler aufgetreten!"
+   },
+   "errorText": {
+      "description": "",
+      "message": "Bei dem Versuch die Caches auszulesen ist folgender Fehler aufgetreten:"
+   },
+   "extensionDescription": {
+      "description": "",
+      "message": "Zeigt ein Icon in der Adressleiste an, mit dem der TYPO3 Cache direkt aus Google Chrome heraus geleert werden kann."
+   },
+   "loginLinkText": {
+      "description": "",
+      "message": "Zum TYPO3 Backend Login"
+   },
+   "loginRequired": {
+      "description": "",
+      "message": "Bitte melden Sie sich im TYPO3 Backend an um den Cache leeren zu k\u00F6nnen."
+   },
+   "loginRequiredHeadline": {
+      "description": "",
+      "message": "Anmeldung"
+   },
+   "noCachesAvailable": {
+      "description": "",
+      "message": "F\u00FCr Ihren Benutzer sind keine Caches verf\u00FCgbar."
+   },
+   "noCachesAvailableHeadline": {
+      "description": "",
+      "message": "Keine Caches"
+   },
+   "refeshAfterClearingCache": {
+      "description": "",
+      "message": "Automatisch neu laden"
+   }
 }

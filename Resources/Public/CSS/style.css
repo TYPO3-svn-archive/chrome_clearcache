@@ -15,7 +15,7 @@
 	text-decoration: none;
 	color: #212424;
 	display: block;
-	width: 225px;
+	width: 205px;
 	padding: 3px 6px;
 	margin-bottom: 1px;
 }
@@ -39,33 +39,28 @@
 	line-height: 20px;
 }
 
-#typo3_clearcache ul li.checkbox {
+#typo3_clearcache ul li.refresh {
 	margin-top: 5px;
 	border-top: 1px solid #ccc;
 	padding: 8px 0 0;
 	display: block;
 }
 
-#typo3_clearcache ul li.checkbox label {
+#typo3_clearcache ul li.refresh label {
 	display: block;
 }
 
-#typo3_clearcache ul li.checkbox label span {
+#typo3_clearcache ul li.refresh label span {
 	padding-left: 8px;
 	color: #444;
 }
 
-#typo3_clearcache ul li.checkbox label input {
+#typo3_clearcache ul li.refresh label input {
 	margin-left: 7px;
 }
 
-#typo3_clearcache ul li.checkbox label span, #typo3_clearcache ul li.checkbox label input {
+#typo3_clearcache ul li.refresh label span, #typo3_clearcache ul li.refresh label input {
 	vertical-align: middle;
-}
-
-#typo3_clearcache ul li.checkbox.autoClearCache {
-	border-top: none;
-	padding-top: 0;
 }
 
 

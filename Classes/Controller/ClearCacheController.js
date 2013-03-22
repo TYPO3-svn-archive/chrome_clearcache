@@ -118,7 +118,7 @@ Typo3ClearCache.prototype.noTypo3Action = function() {
 
 /**
  * Builds the context menu
- * @param tabId
+ * @param caches
  */
 Typo3ClearCache.prototype.buildContextMenu = function(tabId) {
 	var $this = this;
@@ -159,21 +159,6 @@ Typo3ClearCache.prototype.buildContextMenu = function(tabId) {
 				localStorage.removeItem('refeshAfterClearingCache');
 			} else {
 				localStorage.refeshAfterClearingCache = true;
-			}
-		},
-		"parentId" : mainMenu
-	});
-
-	var clearCacheOnBeforeRequestMenuItem = chrome.contextMenus.create({
-		"title" : chrome.i18n.getMessage('clearCacheOnBeforeRequest'),
-		"type" : "checkbox",
-		"checked" : Boolean(localStorage.clearCacheOnBeforeRequest),
-		"contexts" : ["all"],
-		"onclick" : function(info, tab) {
-			if (Boolean(localStorage.clearCacheOnBeforeRequest)) {
-				localStorage.removeItem('clearCacheOnBeforeRequest');
-			} else {
-				localStorage.clearCacheOnBeforeRequest = true;
 			}
 		},
 		"parentId" : mainMenu
@@ -277,8 +262,7 @@ Typo3ClearCache.prototype.getLocales = function() {
 		'loginRequiredHeadline',
 		'noCachesAvailable',
 		'noCachesAvailableHeadline',
-		'refeshAfterClearingCache',
-		'clearCacheOnBeforeRequest'
+		'refeshAfterClearingCache'
 	];
 	var locales = {};
 	for (var i = 0; i < localeKeys.length; i++) {

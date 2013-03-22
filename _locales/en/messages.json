@@ -1,62 +1,50 @@
 {
-	"typo3clearcaches":{
-		"description":"",
-		"message":"TYPO3 Clear Caches"
+	"typo3clearcaches": {
+	  "description": "",
+	  "message": "TYPO3 Clear Caches"
 	},
-	"clearCache":{
-		"description":"",
-		"message":"Click to clear TYPO3 caches..."
-	},
-	"errorTitle":{
-		"description":"",
-		"message":"An error occurred"
-	},
-	"errorHeadline":{
-		"description":"",
-		"message":"Error occurred!"
-	},
-	"errorText":{
-		"description":"",
-		"message":"While trying to get the caches the following error occurred:"
-	},
-	"extensionDescription":{
-		"description":"",
-		"message":"Shows icon in address bar to clear TYPO3 cache directly out of Google Chrome. Requires just valid backend session."
-	},
-	"loginLinkText":{
-		"description":"",
-		"message":"Go to TYPO3 backend login"
-	},
-	"loginRequired":{
-		"description":"",
-		"message":"Please login to TYPO3 backend to clear the cache."
-	},
-	"loginRequiredHeadline":{
-		"description":"",
-		"message":"Login"
-	},
-	"noCachesAvailable":{
-		"description":"",
-		"message":"There are no caches available for your user."
-	},
-	"noCachesAvailableHeadline":{
-		"description":"",
-		"message":"No caches"
-	},
-	"refeshAfterClearingCache":{
-		"description":"",
-		"message":"Reload automatically"
-	},
-	"executing":{
-		"description":"",
-		"message":"Executing"
-	},
-	"loadingPage":{
-		"description":"",
-		"message":"Loading page"
-	},
-	"clearCacheOnBeforeRequest":{
-		"description":"",
-		"message":"Clear first cache automatically"
-	}
+   "clearCache": {
+      "description": "",
+      "message": "Click to clear TYPO3 caches..."
+   },
+   "errorTitle": {
+      "description": "",
+      "message": "An error occurred"
+   },
+   "errorHeadline": {
+      "description": "",
+      "message": "Error occurred!"
+   },
+   "errorText": {
+      "description": "",
+      "message": "While trying to get the caches the following error occurred:"
+   },
+   "extensionDescription": {
+      "description": "",
+      "message": "Shows icon in address bar to clear TYPO3 cache directly out of Google Chrome. Requires just valid backend session."
+   },
+   "loginLinkText": {
+      "description": "",
+      "message": "Go to TYPO3 backend login"
+   },
+   "loginRequired": {
+      "description": "",
+      "message": "Please login to TYPO3 backend to clear the cache."
+   },
+   "loginRequiredHeadline": {
+      "description": "",
+      "message": "Login"
+   },
+   "noCachesAvailable": {
+      "description": "",
+      "message": "There are no caches available for your user."
+   },
+   "noCachesAvailableHeadline": {
+      "description": "",
+      "message": "No caches"
+   },
+   "refeshAfterClearingCache": {
+      "description": "",
+      "message": "Reload automatically"
+   }
 }
